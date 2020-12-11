@@ -34,6 +34,9 @@ async def new_producto(producto: producto_db.ProductoInDB):
 
 @api.delete("/producto/{cod_producto}")
 async def delete_producto(cod_producto: str):
+    if producto_db.get_producto(cod_producto) is None:
+        raise HTTPException(
+            status_code=400, detail="error, no existe este producto")
     del producto_db.database_producto[cod_producto]
     return producto_db.get_productos()
 
