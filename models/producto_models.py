@@ -7,6 +7,8 @@ class ProductoIn(BaseModel):
 
 
 class ProductoOut(BaseModel):
+    codigo:str
     nombre: str
     precio: float
     cantidad: int
+    seccion:str
